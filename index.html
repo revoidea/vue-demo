@@ -1,0 +1,51 @@
+<head>
+    <meta charset="UTF-8">
+    <title>You Don't Know Vuejs - Chapter 1</title>
+  </head>
+  <body>
+    <div id="app">
+       <button v-on:click="addItem">添加</button>
+       <ul>
+         <li v-for="(item,index) in list" v-bind:key="index">
+            <a v-bind:href="item.url">{{ item.name}}</a>
+         </li>
+       </ul>
+      </div>
+    <!-- 这里直接引入cdn源码，当然你也可把它下载下来，直接引入 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var app = new Vue({
+          el:"#app",
+          data(){
+            return{
+              count:1,
+              list:[
+              {
+                  name: 'Vuejs官网',
+                  url: 'https://cn.vuejs.org'
+                },
+                {
+                  name: 'Github',
+                  url: 'https://github.com'
+                },
+                {
+                  name: 'Yuga博客1',
+                  url: 'https://yugasun.com'
+                }
+                
+                ]
+            }
+          },
+          methods:{
+            addItem(){
+              this.count++,
+              this.list.push({
+                name: 'Yuga博客' + this.count,
+                url: 'https://yugasun.com'
+              })
+            }
+          }
+        })
+    </script>
+  </body>
+  </html>
